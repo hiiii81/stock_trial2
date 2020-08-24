@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock_clinical trial</title>
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // index.html 로드가 완료되면 자동으로 showStar() 함수를 호출합니다.
+            showStack();
+        });
+
+        function showStack() {
+            alert("kkk")
+            $.ajax({
+                type: 'GET',
+                url: '/api/stock_list',
+                data: {},
+                success: function (response) {
+                    let stock_list_url = response['stock_url_list']
+                    for (let i = 0; i < stock_list_url.length; i++) {
+                        console.log(stock_list_url[i])
+                        let company_name = response['stock_url_list'][i]['company_name1']
+                        alert(response['stock'])
+                        let stock = response['stock_url_list'][i]['stock_number1']
+                        let tempHtml=`<div class="row">
+                          <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                              <img src="../static/logos/pfizer.jpeg" alt="회사 로고" width="70">
+                              <div class="caption">
+                                <h3>${company_name}</h3>
+                                <p> ${stock}</p>
+                                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>`
+                     $('#company').append(tempHtml)
+                    }
+                    let trial_list_url = response['trial_url_list']
+                    for (let i = 0; i < stock_list_url.length; i++) {
+                        console.log(trial_list_url[i])
+                        alert(trial_list_url[i]['number_trial1'])
+                        let number_trial = response['trial_url_list'][i]['number_trial1']
+                        let nr = response['trial_url_list'][i]['nr']
+                        let renenr = response['trial_url_list'][i]['renenr1']
+                        let act = response['trial_url_list'][i]['act1']
+                        let comp = response['trial_url_list'][i]['comp1']
+                        let stw = response['trial_url_list'][i]['stw1']
+                        let unk = response['trial_url_list'][i]['unk1']
+                        alert(stw)
+                        let row_tempHtml=`<tr>
+                            <td class="active">${company_name}</td>
+                            <td class="success">$${stock}</td>
+                            <td class="warning">${number_trial}</td>
+                            <td class="danger">${nr}</td>
+                            <td class="info">${renenr}</td>
+                            <td class="info">${act}</td>
+                            <td class="info">${comp}</td>
+                            <td class="info">${stw}</td>
+                         <td class="info">${unk}</td>
+                        </tr>`
+                        $('#company_list_each').append(row_tempHtml)
+                    }
+                }
+            })
+                    //response['stock_url_list'][0]['company_name1']
+                    {#for i in stock_url_list:#}
+                    {#    let company_name = response['stock_url_list'][i]['company_name1']#}
+                    {#    //alert(response['stock'])#}
+                    {#    let stock = response['stock_url_list'][i]['stock_number1']#}
+                    {#    //alert(response['percent'])#}
+                    {#    let percent = response['stock_url_list'][i]['percent1']#}
+
+                    {#for i in trial_url_list:#}
+                    {#    let number_trial=response['trial_url_list'][i]['number_trial1']#}
+                    {#    let nr=response['trial_url_list'][i]['nr1']#}
+                    {#    let wth=response['trial_url_list'][i]['wth1']#}
+                    {#    let renenr =response['trial_url_list'][i]['renenr1']#}
+                    {#    let act =response['trial_url_list'][i]['act1']#}
+                    {#    let comp =response['trial_url_list'][i]['comp1']#}
+                    {#    let stw =response['trial_url_list'][i]['stw1']#}
+                    {#    let unk =response['trial_url_list'][i]['unk1']#}
+
+
+                        //alert(response['number_trial'])
+
+                        // let test_list = response['test_list']
+                        // for(let i = 0; i < test_list.length; i++){}
+                        //  test_list[i]['company_name']
+
+                    {#let tempHtml=`<div class="row">#}
+                    {#      <div class="col-sm-6 col-md-4">#}
+                    {#        <div class="thumbnail">#}
+                    {#          <img src="../static/logos/pfizer.jpeg" alt="회사 로고" width="70">#}
+                    {#          <div class="caption">#}
+                    {#            <h3>${company_name}</h3>#}
+                    {#            <p> ${stock}</p>#}
+                    {#            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>#}
+                    {#          </div>#}
+                    {#        </div>#}
+                    {#      </div>#}
+                    {#    </div>`#}
+                    {# $('#company').append(tempHtml)#}
+                    {##}
+                    {#let row_tempHtml=`<tr>#}
+                    {#    <td class="active">${company_name}</td>#}
+                    {#    <td class="success">$${stock}</td>#}
+                    {#    <td class="warning">${number_trial}</td>#}
+                    {#    <td class="danger">${nr}</td>#}
+                    {#    <td class="info">${renenr}</td>#}
+                    {#    <td class="info">${act}</td>#}
+                    {#    <td class="info">${comp}</td>#}
+                    {#    <td class="info">${stw}</td>#}
+                    {# <td class="info">${unk}</td>#}
+                    {#</tr>`#}
+                    {#$('#company_list_each').append(row_tempHtml)#}
+                /*}
+            });*/
+        }
+
+
+    </script>
+
+
+</head>
+<body>
+
+    <div class="jumbotron">
+      <h2>Stock_pharmaceutical company</h2>
+      <p>미국 상장 제약 회사의 임상시험현황</p>
+    </div>
+
+
+    <div id="company">
+        <div class="row">
+{#          <div class="col-sm-6 col-md-4">#}
+{#            <div class="thumbnail">#}
+{#              <img src="../static/logos/pfizer.jpeg" alt="회사 로고" width="70">#}
+{#              <div class="caption">#}
+{#                <h3>pfizer</h3>#}
+{#                <p> 주가 , 임상시험 질환변 개수 및 status</p>#}
+{#                <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>#}
+{#              </div>#}
+{#            </div>#}
+{#          </div>#}
+        </div>
+    </div>
+
+    <table class="table table-hover" id="company_list_each">
+        <!-- On rows -->
+        <!--
+<tr class="active">tr</tr>
+<tr class="success">tr2</tr>
+<tr class="warning">tr3</tr>
+<tr class="danger">tr4</tr>
+<tr class="info">tr5</tr>-->
+
+<!-- On cells (`td` or `th`) -->
+     <tr>
+        <th class="active">Company</th>
+        <th class="success">Stock price</th>
+        <th class="warning"># COVID-19 trial</th>
+        <th class="danger">Not yet recruiting</th>
+        <th class="info">Recruiting/Enrolling</th>
+        <th class="info">Active, not recruiting</th>
+        <th class="info">Completed</th>
+        <th class="info">Suspended/Terminated/Withdrawn</th>
+        <th class="info">Unknown status</th>
+    </tr>
+
+
+</table>
+{#<div id="company_list_each">#}
+{##}
+{#</div>#}
+</body>
+</html>
